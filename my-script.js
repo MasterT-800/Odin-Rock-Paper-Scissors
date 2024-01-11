@@ -10,16 +10,16 @@ function getComputerChoice() {
 }
 
 function win(playerSelection, computerSelection) {
-    return 'You win! ' + playerSelection + ' beats' + computerSelection;
+    return 'You win! ' + playerSelection + ' beats ' + computerSelection;
 }
 
 function lose(playerSelection, computerSelection) {
-    return 'You lose, ' + computerSelection + ' beats' + playerSelection;
+    return 'You lose, ' + computerSelection + ' beats ' + playerSelection;
 }
 
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection === computerSelection) {
-        playRound(prompt('Shoot', 'rock').toLowerCase(), getComputerChoice());
+    if (playerSelection == computerSelection) {
+        return playRound(prompt('Tie! Try again', 'rock').toLowerCase(), getComputerChoice());
     }
     else if (playerSelection === 'rock') {
         if (computerSelection === 'paper') {
@@ -46,10 +46,35 @@ function playRound(playerSelection, computerSelection) {
         }
     }
     else { 
-        return 'Pleas choose either rock, paper, or scissors', playRound(prompt('Shoot', 'rock').toLowerCase(), getComputerChoice());
+        return playRound(prompt('Pleas choose either rock, paper, or scissors', 'rock').toLowerCase(), getComputerChoice());
     }
-    
+
 }
 
-const playerSelection = prompt('Shoot', 'rock').toLowerCase();
-const computerSelection = getComputerChoice();
+let playerSelection = prompt('Shoot', 'rock').toLowerCase();
+let computerSelection = getComputerChoice();
+
+function game(playerSelection, computerSelection) {
+    console.log(playRound(playerSelection, computerSelection));
+    playerSelection = prompt('Shoot, again', 'rock').toLowerCase();
+    computerSelection = getComputerChoice();
+
+    console.log(playRound(playerSelection, computerSelection));
+    playerSelection = prompt('Shoot, again', 'rock').toLowerCase();
+    computerSelection = getComputerChoice();
+
+    console.log(playRound(playerSelection, computerSelection));
+    playerSelection = prompt('Shoot, again', 'rock').toLowerCase();
+    computerSelection = getComputerChoice();
+    
+    console.log(playRound(playerSelection, computerSelection));
+    playerSelection = prompt('Shoot, again', 'rock').toLowerCase();
+    computerSelection = getComputerChoice();
+
+    console.log(playRound(playerSelection, computerSelection));
+    playerSelection = prompt('Shoot, again', 'rock').toLowerCase();
+    computerSelection = getComputerChoice();
+    
+    return console.log('Game over');
+
+}
