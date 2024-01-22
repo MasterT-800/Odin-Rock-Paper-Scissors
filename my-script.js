@@ -10,11 +10,13 @@ function getComputerChoice() {
 }
 
 function win(playerSelection, computerSelection) {
-    return 'You win! ' + playerSelection + ' beats ' + computerSelection;
+    user = user + 1;
+    return 'You win! ' + playerSelection + ' beats ' + computerSelection + '\nUser ' + user + ' CPU ' + cpu;
 }
 
 function lose(playerSelection, computerSelection) {
-    return 'You lose, ' + computerSelection + ' beats ' + playerSelection;
+    cpu = cpu + 1;
+    return 'You lose, ' + computerSelection + ' beats ' + playerSelection + '\nUser ' + user + ' CPU ' + cpu;
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -53,8 +55,16 @@ function playRound(playerSelection, computerSelection) {
 
 let playerSelection = prompt('Shoot', 'rock').toLowerCase();
 let computerSelection = getComputerChoice();
+let user = 0;
+let cpu = 0;
+
 
 function game(playerSelection, computerSelection) {
+    user = 0;
+    cpu = 0;
+    let score = 'User ' + user + ' CPU ' + cpu;
+    console.log(score);
+
     console.log(playRound(playerSelection, computerSelection));
     playerSelection = prompt('Shoot, again', 'rock').toLowerCase();
     computerSelection = getComputerChoice();
@@ -72,9 +82,14 @@ function game(playerSelection, computerSelection) {
     computerSelection = getComputerChoice();
 
     console.log(playRound(playerSelection, computerSelection));
-    playerSelection = prompt('Shoot, again', 'rock').toLowerCase();
-    computerSelection = getComputerChoice();
-    
-    return console.log('Game over');
+
+    score = 'User ' + user + ' CPU ' + cpu;
+
+    if (user > cpu) {
+        return console.log('User wins! ' + score);
+    }
+    else {
+        return console.log('CPU wins! ' + score);
+    }
 
 }
